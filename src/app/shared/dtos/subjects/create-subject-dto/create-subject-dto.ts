@@ -1,1 +1,7 @@
-export class CreateSubjectDTO {}
+export class CreateSubjectDTO {
+  subjectName: string = '';
+
+  tutorId?: string = '';
+
+  sclassId?: string = '';
+}
