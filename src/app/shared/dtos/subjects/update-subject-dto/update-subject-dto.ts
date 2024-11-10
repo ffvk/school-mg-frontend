@@ -4,4 +4,6 @@ export class UpdateSubjectDTO {
   tutorId?: string = '';
 
   sclassId?: string = '';
+
+  subjectId?: string = '';
 }

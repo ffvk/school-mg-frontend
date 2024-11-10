@@ -14,7 +14,7 @@ import { Subjects } from '../../models/subjects/subjects';
 @Injectable({
   providedIn: 'root',
 })
-export class SubjectsService {
+export class SubjectsApiService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getSubjects(query?: GetSubjectsDTO): Observable<Subjects> {

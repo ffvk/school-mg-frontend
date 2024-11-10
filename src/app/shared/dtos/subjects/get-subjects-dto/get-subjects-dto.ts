@@ -7,6 +7,8 @@ export class GetSubjectsDTO {
 
   tutorId?: string = '';
 
+  userId?: string = '';
+
   sclassId?: string = '';
 
   limit?: number;

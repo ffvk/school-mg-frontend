@@ -47,5 +47,7 @@ export enum UserGenderEnum {
 
 export enum UserRoleEnum {
   ADMIN = 'ADMIN',
+  ROOT = 'ROOT',
   CUSTOMER = 'CUSTOMER',
+  STUDENT = 'STUDENT',
 }
