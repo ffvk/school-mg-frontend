@@ -1,0 +1,111 @@
+<div class="container">
+  <div class="sub-header">
+    <header>
+      <nav class="bottom">
+        <div class="so-container">
+          <ul class="menu-full">
+            <li>
+              <a href="/">
+                <img src="/assets/images/dog.jpg" alt="Logo" />
+              </a>
+            </li>
+
+            <li>
+              <a href="#about">About</a>
+            </li>
+
+            <li>
+              <a href="#service">Service</a>
+            </li>
+
+            <li>
+              <a href="/order">Order</a>
+            </li>
+
+            <li>
+              <a href="/product">Products</a>
+            </li>
+
+            <li>
+              <a href="/profile">Profile</a>
+            </li>
+
+            <li>
+              <a href="tel:+919426633955">+91 9426 633 955</a>
+            </li>
+          </ul>
+
+          <ul class="menu-mini">
+            <li>
+              <img
+                src="/assets/images/menu.png"
+                alt="Menu Icon"
+                (click)="toggleMenu(true)"
+              />
+            </li>
+          </ul>
+
+          <div class="menu-sidebar" [class.show]="isMenuOpen">
+            <div class="top">
+              <ul>
+                <li>
+                  <a href="/">
+                    <img src="/assets/images/logo.png" alt="Logo" />
+                  </a>
+                </li>
+
+                <li class="close-btn">
+                  <img
+                    src="/assets/images/close.png"
+                    alt=""
+                    (click)="toggleMenu(false)"
+                  />
+                </li>
+              </ul>
+            </div>
+
+            <ul>
+              <li>
+                <a href="#about" (click)="goto($event, '#about')"> About </a>
+              </li>
+
+              <li>
+                <a href="#capabilities" (click)="goto($event, '#capabilities')">
+                  Capabilities
+                </a>
+              </li>
+
+              <li>
+                <a href="#products" (click)="goto($event, '#products')">
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#visit" (click)="goto($event, '#visit')"> Contact </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+  </div>
+
+  <div class="info-wrap">
+    <div class="left">
+      <h2>Hamyparabmparabh Med</h2>
+      <h6>
+        Highest Quality Packaging for all types of products. Highest Quality
+        Packaging for all types of products. Highest Quality types of products.
+        Highest Quality Packaging for all types of products.
+      </h6>
+
+      <button>Request Quote</button>
+
+      <p>Packaging for all types of products</p>
+    </div>
+
+    <div class="right">
+      <img src="/assets/images/login.png" alt="sign in" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="right">
+    <div class="form-container">
+      <div class="head">
+        <h1>Login here</h1>
+        <h3>Welcome Back to Honey</h3>
+      </div>
+
+      <form novalidate autocomplete="off" #loginForm="ngForm">
+        <div class="row">
+          <ion-item lines="none">
+            <ion-label position="stacked"></ion-label>
+            <ion-input
+              name="email"
+              type="text"
+              autocomplete="text"
+              [(ngModel)]="emailValue"
+              ngDefaultControl
+              #userEmailCtrl="ngModel"
+              required
+              placeholder="Email"
+            >
+            </ion-input>
+          </ion-item>
+        </div>
+
+        <div class="row">
+          <ion-item lines="none">
+            <ion-label class="h6-v2" position="stacked"></ion-label>
+            <ion-input
+              [type]="showPassword ? 'text' : 'password'"
+              name="password"
+              type="password"
+              autocomplete="text"
+              [(ngModel)]="password"
+              ngDefaultControl
+              #userPasswordCtrl="ngModel"
+              required
+              placeholder="Password"
+            >
+            </ion-input>
+            <ion-icon
+              slot="end"
+              [name]="showPassword ? 'eye-off' : 'eye'"
+              (click)="togglePassword('create')"
+            >
+            </ion-icon>
+          </ion-item>
+        </div>
+        <!-- 
+          <label
+            color="danger"
+            class="btn-md cp forgot-password"
+            routerLink="/forgot-password"
+            routerDirection="root"
+            position="stacked"
+          >
+            Forgot your Password
+          </label> -->
+
+        <ion-button class="light secondary" (click)="login()">
+          <ion-label>Login</ion-label>
+        </ion-button>
+      </form>
+      <div class="foot">
+        <h3>
+          Don't have an account?
+          <span [routerLink]="'/signup'" [routerDirection]="'root'"
+            >Sign Up</span
+          >
+        </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="left">
+    <img src="assets/images/login.png" />
+  </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+  <div class="right">
+    <div class="form-container">
+      <div class="head">
+        <h1>Create an Account</h1>
+      </div>
+
+      <form novalidate autocomplete="off" #signupForm="ngForm">
+        <ion-item lines="none">
+          <ion-label class="h6-v2" position="stacked">Name</ion-label>
+          <ion-input
+            name="name"
+            type="text"
+            [(ngModel)]="user.name"
+            ngDefaultControl
+            #userNameCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="h6-v2" position="stacked">Email</ion-label>
+          <ion-input
+            name="email"
+            type="email"
+            [(ngModel)]="user.email.value"
+            [disabled]="disableEmail"
+            ngDefaultControl
+            #userEmailCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-label class="h6-v2" position="stacked">Password</ion-label>
+          <ion-input
+            name="password"
+            type="password"
+            [(ngModel)]="user.password.plain"
+            ngDefaultControl
+            #userPasswordCtrl="ngModel"
+            required
+          >
+          </ion-input>
+        </ion-item>
+
+        <ion-button (click)="register()">
+          <ion-label>Sign Up</ion-label>
+        </ion-button>
+      </form>
+    </div>
+  </div>
+
+  <div class="left">
+    <img src="assets/images/login.png" />
+  </div>
+</div>

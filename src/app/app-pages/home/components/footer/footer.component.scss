@@ -1,0 +1,112 @@
+@import "../../../../../assets/scss/media-queries.scss";
+
+.footer {
+  width: 100%;
+  padding: 0 8rem;
+  @include lt-md {
+    padding: 4rem;
+  }
+  .so-container {
+    flex-direction: column;
+    display: block;
+    color: #111111;
+
+    .top {
+      display: flex;
+      flex-direction: column;
+
+      @include lt-md {
+        justify-content: center;
+        margin-bottom: 3rem;
+      }
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: auto auto auto;
+      justify-content: space-between;
+      margin-top: 7.12rem;
+
+      @include lt-lg {
+      }
+
+      @include lt-md {
+        grid-template-columns: auto;
+        margin-bottom: 0;
+        justify-content: center;
+      }
+      .column {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .content-wrap {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 3rem;
+
+          h5 {
+            margin-bottom: 4px;
+          }
+
+          a {
+            text-decoration: none;
+            font-size: 2rem;
+            font-weight: 400;
+            line-height: 3.5rem;
+            color: #111111;
+
+            @include lt-md {
+              font-size: 1.2rem;
+              line-height: 2rem;
+              align-self: center;
+            }
+          }
+
+          &.last {
+            align-items: flex-end;
+          }
+
+          @include lt-md {
+            margin: 1rem 0;
+          }
+
+          ul.socials-wrap {
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            flex-direction: row;
+            margin-top: 1rem;
+
+            li {
+              &:not(:last-child) {
+                margin-right: 2rem;
+              }
+              @include lt-md {
+                width: 1.7rem;
+              }
+            }
+          }
+
+          h5 {
+            @include lt-md {
+              font-size: 1.6rem;
+              display: flex;
+              justify-content: center;
+            }
+          }
+
+          p {
+            @include lt-md {
+              font-size: 1.25rem;
+              font-weight: 400;
+              line-height: 2rem;
+              display: flex;
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

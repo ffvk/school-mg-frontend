@@ -1,0 +1,7 @@
+{
+  "name": "organic_honey_frontend",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

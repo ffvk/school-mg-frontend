@@ -1,0 +1,83 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .right {
+    width: calc(50% + 3rem);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .form-container {
+      width: 50%;
+
+      color: black;
+      .head {
+        margin: 5rem 0;
+      }
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        .row {
+          border-radius: 1rem;
+          background-color: var(--ion-color-tertiary-light) !important;
+
+          ion-icon {
+            color: var(--ion-color-dark);
+            margin-right: 1.5rem;
+            height: 3rem;
+            width: 3rem;
+          }
+        }
+
+        ion-button {
+          display: flex;
+          margin: 1rem 0;
+        }
+        .forgot-password {
+          display: flex;
+          justify-content: flex-end;
+        }
+        span {
+          display: flex;
+          justify-content: center;
+        }
+      }
+      .foot {
+        h3 {
+          span {
+            &:hover {
+              cursor: pointer;
+              color: yellow;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+
+    img {
+      width: 71.25rem;
+      right: -60px;
+      top: calc(50% - 340px);
+      z-index: 1;
+    }
+  }
+}
