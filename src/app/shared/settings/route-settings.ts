@@ -37,5 +37,26 @@ export class RouteSettings {
       UPDATE: '/orders',
       DELETE: '/orders',
     },
+
+    SUBJECTS: {
+      GET: '/subjects',
+      CREATE: '/subjects',
+      UPDATE: '/subjects',
+      DELETE: '/subjects',
+    },
+
+    SCLASSES: {
+      GET: '/sclasses',
+      CREATE: '/sclasses',
+      UPDATE: '/sclasses',
+      DELETE: '/sclasses',
+    },
+
+    HOMEWORKS: {
+      GET: '/homeworks',
+      CREATE: '/homeworks',
+      UPDATE: '/homeworks',
+      DELETE: '/homeworks',
+    },
   };
 }
