@@ -16,15 +16,17 @@ import {
 })
 export class VerticalTabsComponent implements AfterViewInit, OnDestroy {
   @Input() tabs: { title: string; component: any }[] = [];
+
   @ViewChild('tabContent', { read: ViewContainerRef })
   tabContent!: ViewContainerRef;
-  public activeTabIndex: number = 0; // Default to the first tab
 
+  public activeTabIndex: number = 0; // Default to the first tab
   public componentRef!: ComponentRef<any>;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
+    console.log('Tabs received:', this.tabs); // Log to check tabs input
     if (this.tabs.length > 0) {
       this.selectTab(0, this.tabs[0]);
     }

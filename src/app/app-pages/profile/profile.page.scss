@@ -25,9 +25,9 @@ app-vertical-tabs {
 }
 
 ::ng-deep app-basic,
-::ng-deep app-company,
-::ng-deep app-offset-users,
-::ng-deep app-client-users {
+::ng-deep app-students,
+::ng-deep app-teachers,
+::ng-deep app-subjects {
   width: 100%;
   background: var(--ion-color-background-medium);
 }
