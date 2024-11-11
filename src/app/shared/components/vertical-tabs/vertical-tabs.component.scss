@@ -1,24 +1,36 @@
 .container {
   display: flex;
-}
+  align-items: flex-start;
+  justify-content: flex-start;
+  font-size: 2rem;
+  background-color: var(--ion-color-background-medium);
+  // color: var(--ion-color-black);
+  color: black;
+  box-shadow: 0 10px 50px 0 rgba(0, 0, 0, 0.1);
 
-.tabs ul {
-  list-style: none;
-  padding: 0;
-}
+  .tabs {
+    display: inline-block;
+    width: 200px; // Set the width of the tabs here
+    flex-shrink: 0; // Prevent the tabs from shrinking
+    flex-grow: 0; // Prevent the tabs from growing
+    flex-basis: 200px;
+    ul {
+      width: 100%;
+      padding: 12rem 0 11rem 2.5rem;
 
-.tabs li {
-  cursor: pointer;
-  padding: 10px;
-  background-color: #f1f1f1;
-}
+      li {
+        width: 100%;
+        padding: 1rem 2rem;
+        text-align: left;
+        cursor: pointer;
+      }
+    }
 
-.tabs li.active {
-  font-weight: bold;
-  background-color: #e0e0e0;
-}
-
-.tab-content {
-  margin-left: 20px;
-  flex-grow: 1;
+    .active {
+      background: var(--ion-color-background-light);
+      border-radius: 1rem 0 0 1rem;
+    }
+  }
+  .tab-content {
+  }
 }
