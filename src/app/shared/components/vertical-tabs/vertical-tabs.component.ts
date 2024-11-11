@@ -17,10 +17,10 @@ import {
 export class VerticalTabsComponent implements AfterViewInit, OnDestroy {
   @Input() tabs: { title: string; component: any }[] = [];
   @ViewChild('tabContent', { read: ViewContainerRef })
-  tabContent: ViewContainerRef;
+  tabContent!: ViewContainerRef;
   public activeTabIndex: number = 0; // Default to the first tab
 
-  public componentRef: ComponentRef<any>;
+  public componentRef!: ComponentRef<any>;
 
   constructor(private changeDetectorRef: ChangeDetectorRef) {}
 
