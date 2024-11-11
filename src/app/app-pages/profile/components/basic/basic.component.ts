@@ -51,7 +51,8 @@ export class BasicComponent implements OnInit {
           handler: () => {
             this.userLocalService.removeMe();
 
-            this.router.navigateByUrl('/login');
+            // this.router.navigateByUrl('/login');
+            this.router.navigateByUrl('/logincard');
           },
         },
         {
