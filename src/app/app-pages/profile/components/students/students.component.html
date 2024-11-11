@@ -17,8 +17,8 @@
         <li class="th"></li>
         <li class="th">Name</li>
         <li class="th">Email</li>
-        <li class="th">Phone</li>
-        <li class="th">Organization</li>
+        <!-- <li class="th">Phone</li>
+        <li class="th">Organization</li> -->
         <li class="th">Created On</li>
         <li class="th"></li>
       </ul>
@@ -35,13 +35,13 @@
         <li class="td" title="{{ user.email?.value }}">
           <span class="truncate-text email">{{ user.email?.value }}</span>
         </li>
-        <!-- <li class="td" title="{{ user.phone?.number }}">
-          <span class="truncate-text phone">{{ user.phone?.number }}</span>
+        <!-- <li class="td">
+          <span class="truncate-text phone"> user.phone?.number </span>
         </li>
-        <li class="td" title="{{ user.organization.name }}">
-          <span class="truncate-text organization">{{
+        <li class="td">
+          <span class="truncate-text organization">
             user.organization.name
-          }}</span>
+          </span>
         </li> -->
         <li class="td">
           {{ user.timestamp?.createdAt }}

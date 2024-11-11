@@ -6,6 +6,7 @@ import { lastValueFrom } from 'rxjs';
 import { GetUsersDTO } from 'src/app/shared/dtos/users/get-users-dto/get-users.dto';
 import { User } from 'src/app/shared/models/users/user';
 import { UsersApiService } from 'src/app/shared/services/api/users-api.service';
+import { ToasterService } from 'src/app/shared/services/helpers/toaster.service';
 import { UserLocalService } from 'src/app/shared/services/local/user-local.service';
 
 @Component({
@@ -14,22 +15,27 @@ import { UserLocalService } from 'src/app/shared/services/local/user-local.servi
   styleUrls: ['./teachers.component.scss'],
 })
 export class TeachersComponent implements OnInit {
-  offsetUsers: User[] = [];
+  clientUsers: User[] = [];
   me: User = new User();
 
   query: GetUsersDTO = {
     limit: -1,
     page: 1,
-    role: 'TEACHER',
+    role: 'ROOT',
   };
+
+  // organizationQuery: GetOrganizationsDTO = {
+  //   limit: -1,
+  //   page: 1,
+  // };
 
   constructor(
     private userLocalService: UserLocalService,
     private alertController: AlertController,
     private router: Router,
-    private toastr: ToastrService,
-    private readonly modalController: ModalController,
-    private readonly usersAPIService: UsersApiService
+    private modalController: ModalController,
+    private readonly usersAPIService: UsersApiService,
+    private toaster: ToasterService // private readonly organizationAPIService: OrganizationsApiService
   ) {}
 
   async ngOnInit() {
@@ -43,22 +49,27 @@ export class TeachersComponent implements OnInit {
       return;
     }
 
+    // this.query.parentOrganizationId = this.me.organizationId;
+
     await this.getUsers();
+    // await this.getOrganizations();
   }
 
   async getUsers() {
-    this.offsetUsers = (
+    this.clientUsers = (
       await lastValueFrom(this.usersAPIService.getUsers(this.query))
     ).users;
   }
 
-  // async userModal(userData: User = new User({})) {
+  // async clientUserModal(userData: User = new User({})) {
   //   const modal = await this.modalController.create({
-  //     component: OffsetUserFormComponent,
-  //     cssClass: 'offset-user-form-wrap',
+  //     component: ClientUserFormComponent,
+  //     cssClass: 'client-user-form-wrap',
   //     backdropDismiss: false,
   //     componentProps: {
   //       user: userData,
+  //       organizations: this.clientOrganizations,
+  //       me: this.me,
   //     },
   //   });
 
@@ -70,16 +81,6 @@ export class TeachersComponent implements OnInit {
   //     this.getUsers();
   //   }
   // }
-
-  updateQuery(key: keyof GetUsersDTO, evt: Event) {
-    this.query.page = 1;
-    const { target } = evt;
-    this.query[key] = encodeURIComponent((target as any).value) as never;
-    if (Array.isArray(this.query[key])) {
-      this.query[key] = (this.query[key] as any).join(',') as never;
-    }
-    this.getUsers();
-  }
 
   async presentAlert(user: User) {
     const alert = await this.alertController.create({
@@ -94,7 +95,7 @@ export class TeachersComponent implements OnInit {
             this.usersAPIService.deleteUser(user.userId).subscribe(() => {
               this.getUsers();
 
-              this.toastr.success('User successfully deleted');
+              this.toaster.success('User successfully deleted');
             });
           },
         },
@@ -108,4 +109,39 @@ export class TeachersComponent implements OnInit {
 
     await alert.present();
   }
+
+  searchQuery(key: keyof GetUsersDTO, evt: Event) {
+    this.query.page = 1;
+    const { target } = evt;
+    this.query[key] = encodeURIComponent((target as any).value) as never;
+    if (Array.isArray(this.query[key])) {
+      this.query[key] = (this.query[key] as any).join(',') as never;
+    }
+    this.getUsers();
+  }
+
+  // async getOrganizations() {
+  //   let organizationQuery: GetOrganizationsDTO = {
+  //     limit: -1,
+  //     page: 1,
+  //     organizationId: this.me.organizationId,
+  //     type: 'OFFSET_PRINTER',
+  //   };
+
+  //   this.offsetOrganizations = (
+  //     await lastValueFrom(
+  //       this.organizationAPIService.getOrganizations(organizationQuery)
+  //     )
+  //   ).organizations;
+
+  //   organizationQuery.type = 'CLIENT';
+  //   delete organizationQuery.organizationId;
+  //   organizationQuery.parentOrganizationId = this.me.organizationId;
+
+  //   this.clientOrganizations = (
+  //     await lastValueFrom(
+  //       this.organizationAPIService.getOrganizations(organizationQuery)
+  //     )
+  //   ).organizations;
+  // }
 }
