@@ -1,1 +1,69 @@
-<p>teachers works!</p>
+<div class="container">
+  <!-- <app-sub-header
+    [userType]="'Offset Users'"
+    (createButtonClicked)="userModal()"
+    (queryUpdated)="updateQuery($event.key, $event.evt)"
+  >
+  </app-sub-header> -->
+
+  <div class="content-wrap">
+    <div class="list-view table">
+      <ul class="head">
+        <li class="th">#</li>
+        <li class="th"></li>
+        <li class="th">Name</li>
+        <li class="th">Email</li>
+        <li class="th">Phone</li>
+        <li class="th">Organization</li>
+        <li class="th">Created On</li>
+        <li class="th"></li>
+      </ul>
+
+      <ul *ngFor="let user of offsetUsers; let idx = index">
+        <li class="td">{{ idx + 1 }}</li>
+        <li class="td">
+          <span class="img-wrap">
+            <img src=" '/assets/images/user.png'" />
+          </span>
+        </li>
+        <li class="td" title="{{ user.name }}">
+          <span class="truncate-text name">{{ user.name }}</span>
+        </li>
+
+        <li class="td" title="{{ user.email?.value }}">
+          <span class="truncate-text email">{{ user.email?.value }}</span>
+        </li>
+
+        <!-- <li class="td" title="{{ user.phone?.number }}">
+          <span class="truncate-text phone">{{ user.phone?.number }}</span>
+        </li> -->
+        <!-- 
+        <li class="td" title="{{ user.organization.name }}">
+          <span class="truncate-text organization">{{
+            user.organization.name
+          }}</span>
+        </li> -->
+
+        <li class="td">
+          {{ user.timestamp?.createdAt }}
+        </li>
+        <li class="td">
+          <ion-button
+            fill="clear"
+            class="circle-button animate__animated animate__pulse-hover"
+          >
+            <ion-icon src="/assets/images/edit-icon.svg"></ion-icon>
+          </ion-button>
+
+          <ion-button
+            fill="clear"
+            (click)="presentAlert(user)"
+            class="circle-button button-edit animate__animated animate__pulse-hover"
+          >
+            <ion-icon src="/assets/images/delete-icon.svg"></ion-icon>
+          </ion-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
