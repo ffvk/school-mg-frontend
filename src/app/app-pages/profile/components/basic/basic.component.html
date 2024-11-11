@@ -1,1 +1,122 @@
-<p>basic works!</p>
+<div class="container">
+  <div class="header">
+    <h3>My Profile</h3>
+  </div>
+
+  <div class="body">
+    <ul class="profile-wrap">
+      <li>
+        <!-- <div class="profile-pic">
+           <img
+            [src]="me?.profilePic?.url || '/assets/images/user.png'"
+            alt=""
+          /> -->
+        <!-- <div
+            class="edit-button animate__animated animate__pulse_plus-hover"
+            (click)="uploadPhotoChangeModal()"
+          > 
+            <img src="/assets/images/edit.svg" alt="" />
+          </div>
+        </div> -->
+
+        <div class="name-wrap">
+          <h5>{{ me.name }}</h5>
+          <!-- <ion-label class="body2"
+            >{{ UserRole[me.role] }} | {{ UserGender[me.gender] }}</ion-label
+          > -->
+        </div>
+      </li>
+
+      <li>
+        <div class="sign-out-wrap">
+          <ion-button
+            class="light danger animate__animated animate__pulse-hover"
+            fill="clear"
+            (click)="signOutModal()"
+            >Sign Out</ion-button
+          >
+        </div>
+      </li>
+    </ul>
+
+    <div class="detail-wrap">
+      <div class="card-wrap">
+        <div class="card-header">
+          <ul class="info-wrap">
+            <li>
+              <span class="body2">
+                <p class="body2">Name</p>
+                <p class="sub1">{{ me.name }}</p>
+              </span>
+            </li>
+
+            <li>
+              <!-- <ion-button
+                class="light primary animate__animated animate__pulse-hover"
+                fill="clear"
+                (click)="editModal()"
+              > -->
+              <span>Edit</span>
+              <!-- </ion-button> -->
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-body">
+          <ul>
+            <li>
+              <span class="body2">Bio</span>
+              <!-- <ion-label class="text-color" *ngIf="me.bio">{{
+                me.bio
+              }}</ion-label>
+
+              <ion-label class="no-data" *ngIf="!me.bio"
+                >No bio added</ion-label
+              > -->
+            </li>
+
+            <li>
+              <span class="body2">Email</span>
+              <ion-label class="sub1" *ngIf="me.email?.value">{{
+                me.email?.value
+              }}</ion-label>
+
+              <ion-label class="no-data" *ngIf="!me.email?.value"
+                >No email added</ion-label
+              >
+            </li>
+
+            <li>
+              <span class="body2">Phone</span>
+
+              <!-- <ion-label class="sub1" *ngIf="me.phone?.number">{{
+                me.phone?.number
+              }}</ion-label>
+              <ion-label class="no-data" *ngIf="!me.phone?.number"
+                >No phone added</ion-label
+              > -->
+            </li>
+          </ul>
+        </div>
+
+        <div class="card-footer">
+          <ul>
+            <li>
+              <p class="body2">Password</p>
+              <span class="password">.....................</span>
+            </li>
+            <li>
+              <!-- <ion-button
+                class="light danger animate__animated animate__pulse-hover"
+                fill="clear"
+                (click)="passwordChangeModal()"
+              > -->
+              <!-- <span>Change Password</span>
+              </ion-button> -->
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
