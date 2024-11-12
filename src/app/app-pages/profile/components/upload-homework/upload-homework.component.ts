@@ -14,14 +14,14 @@ import { AppSettings } from 'src/app/shared/settings/app-settings';
 export class UploadHomeworkComponent implements OnInit {
   @ViewChild('uploadPhotoForm', { static: false }) uploadPhotoForm: any;
   @Input() homework: Homework = new Homework();
-  @Input() profilePic: any = null;
+  @Input() uploadFile: any = null;
 
   APP_SETTINGS = AppSettings;
   mimeTypes = this.APP_SETTINGS.MIME_TYPES;
 
   isDisabled: boolean = false;
 
-  allowedFileFormats: string[] = ['image/png', 'image/jpeg'];
+  // allowedFileFormats: string[] = ['image/png', 'image/jpeg'];
 
   constructor(
     public readonly modalController: ModalController,
@@ -36,28 +36,30 @@ export class UploadHomeworkComponent implements OnInit {
   }
 
   async save() {
-    if (!this.profilePic) {
+    if (!this.uploadFile) {
       this.toaster.error('Please upload file first');
       return;
     }
 
+    console.log('Uploading file:', this.uploadFile);
+
     await lastValueFrom(
       this.homeworksAPIService.uploadHomeworkFile(
         this.homework.homeworkId,
-        this.profilePic
+        this.uploadFile
       )
     );
 
-    this.toaster.success('ProfilePhoto successfully updated');
+    this.toaster.success('Homework successfully updated');
 
     this.modalController.dismiss(this.homework);
   }
 
   readFile(evt: Event) {
-    this.profilePic = (evt.target as HTMLInputElement).files?.item(0) ?? null;
+    this.uploadFile = (evt.target as HTMLInputElement).files?.item(0) ?? null;
   }
 
   removeFile() {
-    this.profilePic = null;
+    this.uploadFile = null;
   }
 }
