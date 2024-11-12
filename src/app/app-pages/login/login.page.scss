@@ -31,7 +31,13 @@
         gap: 2rem;
         .row {
           border-radius: 1rem;
-          background-color: var(--ion-color-tertiary-light) !important;
+
+          ion-input {
+            color: black;
+            font-size: 3rem;
+            background-color: aquamarine;
+            padding: 2rem !important;
+          }
 
           ion-icon {
             color: var(--ion-color-dark);
@@ -44,6 +50,11 @@
         ion-button {
           display: flex;
           margin: 1rem 0;
+
+          ion-label {
+            padding: 1rem;
+            font-size: 2rem;
+          }
         }
         .forgot-password {
           display: flex;
@@ -55,11 +66,12 @@
         }
       }
       .foot {
-        h3 {
+        h4 {
           span {
             &:hover {
               cursor: pointer;
-              color: yellow;
+              color: blue;
+              font-family: Georgia, "Times New Roman", Times, serif;
             }
           }
         }

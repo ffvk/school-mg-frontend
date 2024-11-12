@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuController } from '@ionic/angular';
 import { User } from 'src/app/shared/models/users/user';
 import { UsersApiService } from 'src/app/shared/services/api/users-api.service';
@@ -12,6 +12,8 @@ import { UserLocalService } from 'src/app/shared/services/local/user-local.servi
 })
 export class LoginPage implements OnInit {
   @ViewChild('loginForm', { static: false }) loginForm: any;
+
+  role: string | null = null;
 
   emailValue: string = '';
   password: string = '';
@@ -26,7 +28,8 @@ export class LoginPage implements OnInit {
     private menu: MenuController,
     private router: Router,
     private toaster: ToasterService,
-    private cdRef: ChangeDetectorRef
+    private cdRef: ChangeDetectorRef,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -42,6 +45,11 @@ export class LoginPage implements OnInit {
     if (!this.user.email?.verified) {
       this.router.navigateByUrl('/verify-email');
     }
+
+    this.route.queryParams.subscribe((params) => {
+      this.role = params['role'];
+      console.log('User role:', this.role); // e.g., 'ADMIN', 'TEACHER', 'STUDENT'
+    });
   }
 
   ionViewWillEnter() {

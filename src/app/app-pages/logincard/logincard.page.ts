@@ -10,4 +10,8 @@ export class LogincardPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  toggleMenu(role: string) {
+    this.router.navigate(['/login'], { queryParams: { role: role } });
+  }
 }
