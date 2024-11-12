@@ -117,7 +117,7 @@ export class HomeworksComponent implements OnInit {
       cssClass: 'upload-photo-form-wrap',
       backdropDismiss: false,
       componentProps: {
-        user: this.allHomeworks,
+        homework: this.allHomeworks,
       },
     });
 
@@ -125,8 +125,8 @@ export class HomeworksComponent implements OnInit {
 
     let { data } = await modal.onDidDismiss();
 
-    // if (data) {
-    //   this.getCurrentUser();
-    // }
+    if (data) {
+      this.getHomeworks();
+    }
   }
 }
