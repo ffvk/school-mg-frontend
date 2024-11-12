@@ -87,7 +87,7 @@ export class HomeworksApiService {
 
     formData.append('homeworkId', homeworkId);
 
-    formData.append('homeworkFile', file);
+    formData.append('file', file);
 
     return this.httpClient
       .post(uploadUserProfilePicURL, formData)

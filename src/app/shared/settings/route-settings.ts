@@ -57,7 +57,7 @@ export class RouteSettings {
       CREATE: '/homeworks',
       UPDATE: '/homeworks',
       DELETE: '/homeworks',
-      UPLOAD_FILE: '/users/file',
+      UPLOAD_FILE: '/homeworks/file',
     },
   };
 }
