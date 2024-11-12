@@ -7,7 +7,7 @@
 
       <form novalidate autocomplete="off" #signupForm="ngForm">
         <ion-item lines="none">
-          <ion-label class="h6-v2" position="stacked">Name</ion-label>
+          <ion-label class="text" position="stacked">Name</ion-label>
           <ion-input
             name="name"
             type="text"
@@ -20,7 +20,7 @@
         </ion-item>
 
         <ion-item lines="none">
-          <ion-label class="h6-v2" position="stacked">Email</ion-label>
+          <ion-label class="text" position="stacked">Email</ion-label>
           <ion-input
             name="email"
             type="email"
@@ -34,7 +34,7 @@
         </ion-item>
 
         <ion-item lines="none">
-          <ion-label class="h6-v2" position="stacked">Password</ion-label>
+          <ion-label class="text" position="stacked">Password</ion-label>
           <ion-input
             name="password"
             type="password"
@@ -50,6 +50,13 @@
           <ion-label>Sign Up</ion-label>
         </ion-button>
       </form>
+
+      <div class="foot">
+        <h4>
+          Already signup ?
+          <span [routerLink]="'/login'" [routerDirection]="'root'">Login</span>
+        </h4>
+      </div>
     </div>
   </div>
 
