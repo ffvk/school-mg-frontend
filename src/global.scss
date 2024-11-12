@@ -25,15 +25,14 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
-/**
- * Ionic Dark Mode
- * -----------------------------------------------------
- * For more info, please see:
- * https://ionicframework.com/docs/theming/dark-mode
- */
-
-/* @import "@ionic/angular/css/palettes/dark.always.css"; */
-/* @import "@ionic/angular/css/palettes/dark.class.css"; */
-@import "@ionic/angular/css/palettes/dark.system.css";
+@import "ngx-toastr/toastr";
+@import "assets/scss/mixins.scss";
 @import "assets/scss/utils.scss";
-@import "assets/scss/media-queries.scss";
+// @import "assets/scss/ionic-reset.scss";
+// @import "assets/scss/ion-button.scss";
+// @import "assets/scss/form.scss";
+@import "assets/scss/table.scss";
+// @import "assets/scss/ion-modal.scss";
+// @import "assets/scss/ion-alert.scss";
+// @import "assets/scss/sub-header.scss";
+// @import "assets/scss/animated.scss";

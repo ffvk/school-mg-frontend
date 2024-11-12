@@ -11,7 +11,7 @@ import { UpdateHomeworkDTO } from '../../dtos/homeworks/update-homework-dto/upda
 @Injectable({
   providedIn: 'root',
 })
-export class HomeworksService {
+export class HomeworksApiService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getHomeworks(query?: GetHomeworksDTO): Observable<Homeworks> {

@@ -6,6 +6,7 @@ import { BasicComponent } from './components/basic/basic.component';
 import { StudentsComponent } from './components/students/students.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { HomeworksComponent } from './components/homeworks/homeworks.component';
 
 @Component({
   selector: 'app-profile',
@@ -21,6 +22,7 @@ export class ProfilePage implements OnInit, ViewDidEnter {
     { title: 'Students Details', component: StudentsComponent },
     { title: 'Teachers Details', component: TeachersComponent },
     { title: 'Subject Details', component: SubjectsComponent },
+    { title: 'Homeworks Details', component: HomeworksComponent },
   ];
 
   constructor(private userLocalService: UserLocalService) {}
