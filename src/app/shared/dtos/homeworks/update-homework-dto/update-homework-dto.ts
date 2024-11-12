@@ -1,9 +1,11 @@
 export class UpdateHomeworkDTO {
+  homeworkId: string = '';
+
   title: string = '';
 
   description?: string = '';
 
-  tutorId: string = '';
+  tutorId?: string = '';
 
   sclassId?: string = '';
 

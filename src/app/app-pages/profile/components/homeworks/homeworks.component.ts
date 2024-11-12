@@ -3,21 +3,21 @@ import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { ToastrService } from 'ngx-toastr';
 import { lastValueFrom } from 'rxjs';
-import { GetSubjectsDTO } from 'src/app/shared/dtos/subjects/get-subjects-dto/get-subjects-dto';
-import { Subject } from 'src/app/shared/models/subjects/subject';
-import { SubjectsApiService } from 'src/app/shared/services/api/subjects.service';
+import { GetHomeworksDTO } from 'src/app/shared/dtos/homeworks/get-homeworks-dto/get-homeworks-dto';
+import { Homework } from 'src/app/shared/models/homeworks/homework';
+import { HomeworksApiService } from 'src/app/shared/services/api/homeworks.service';
 import { ToasterService } from 'src/app/shared/services/helpers/toaster.service';
 import { UserLocalService } from 'src/app/shared/services/local/user-local.service';
 
 @Component({
-  selector: 'app-subjects',
-  templateUrl: './subjects.component.html',
-  styleUrls: ['./subjects.component.scss'],
+  selector: 'app-homeworks',
+  templateUrl: './homeworks.component.html',
+  styleUrls: ['./homeworks.component.scss'],
 })
-export class SubjectsComponent implements OnInit {
-  allSubjects: Subject[] = [];
+export class HomeworksComponent implements OnInit {
+  allHomeworks: Homework[] = [];
 
-  query: GetSubjectsDTO = {
+  query: GetHomeworksDTO = {
     limit: -1,
     page: 1,
   };
@@ -32,30 +32,30 @@ export class SubjectsComponent implements OnInit {
     private alertController: AlertController,
     private router: Router,
     private modalController: ModalController,
-    private readonly subjectsAPIService: SubjectsApiService,
+    private readonly homeworksAPIService: HomeworksApiService,
     private toaster: ToasterService // private readonly organizationAPIService: OrganizationsApiService
   ) {}
 
   async ngOnInit() {
     // this.query.parentOrganizationId = this.me.organizationId;
 
-    await this.getSubjects();
+    await this.getHomeworks();
     // await this.getOrganizations();
   }
 
-  async getSubjects() {
-    this.allSubjects = (
-      await lastValueFrom(this.subjectsAPIService.getSubjects(this.query))
-    ).subjects;
+  async getHomeworks() {
+    this.allHomeworks = (
+      await lastValueFrom(this.homeworksAPIService.getHomeworks(this.query))
+    ).homeworks;
   }
 
-  // async clientSubjectModal(subjectData: Subject = new Subject({})) {
+  // async clientHomeworkModal(homeworkData: Homework = new Homework({})) {
   //   const modal = await this.modalController.create({
-  //     component: ClientSubjectFormComponent,
-  //     cssClass: 'client-subject-form-wrap',
+  //     component: ClientHomeworkFormComponent,
+  //     cssClass: 'client-homework-form-wrap',
   //     backdropDismiss: false,
   //     componentProps: {
-  //       subject: subjectData,
+  //       homework: homeworkData,
   //       organizations: this.clientOrganizations,
   //       me: this.me,
   //     },
@@ -66,11 +66,11 @@ export class SubjectsComponent implements OnInit {
   //   let { data } = await modal.onDidDismiss();
 
   //   if (data) {
-  //     this.getSubjects();
+  //     this.getHomeworks();
   //   }
   // }
 
-  async presentAlert(subject: Subject) {
+  async presentAlert(homework: Homework) {
     const alert = await this.alertController.create({
       header: 'Are you sure?',
       cssClass: 'delete-wrap',
@@ -80,12 +80,12 @@ export class SubjectsComponent implements OnInit {
           role: 'confirm',
           cssClass: 'confirm',
           handler: () => {
-            this.subjectsAPIService
-              .deleteSubject(subject.subjectId)
+            this.homeworksAPIService
+              .deleteHomework(homework.homeworkId)
               .subscribe(() => {
-                this.getSubjects();
+                this.getHomeworks();
 
-                this.toaster.success('Subject successfully deleted');
+                this.toaster.success('Homework successfully deleted');
               });
           },
         },
@@ -100,14 +100,14 @@ export class SubjectsComponent implements OnInit {
     await alert.present();
   }
 
-  searchQuery(key: keyof GetSubjectsDTO, evt: Event) {
+  searchQuery(key: keyof GetHomeworksDTO, evt: Event) {
     this.query.page = 1;
     const { target } = evt;
     this.query[key] = encodeURIComponent((target as any).value) as never;
     if (Array.isArray(this.query[key])) {
       this.query[key] = (this.query[key] as any).join(',') as never;
     }
-    this.getSubjects();
+    this.getHomeworks();
   }
 
   // async getOrganizations() {

@@ -6,12 +6,12 @@
     >
     </app-sub-header> -->
   <div class="content-wrap">
-    <div class="empty-content-wrap" *ngIf="clientUsers.length == 0">
+    <div class="empty-content-wrap" *ngIf="allHomeworks.length == 0">
       <img src="/assets/images/empty-content-img.svg" alt="" />
       <h4>No users found!</h4>
       <h6>Please insert some users to get started.</h6>
     </div>
-    <div class="list-view table" *ngIf="clientUsers.length > 0">
+    <div class="list-view table" *ngIf="allHomeworks.length > 0">
       <ul class="head">
         <li class="th">#</li>
         <li class="th"></li>
@@ -22,29 +22,29 @@
         <li class="th">Created On</li>
         <li class="th"></li>
       </ul>
-      <ul *ngFor="let user of clientUsers; let idx = index">
+      <ul *ngFor="let subject of allHomeworks; let idx = index">
         <li class="td">{{ idx + 1 }}</li>
         <li class="td">
           <span class="img-wrap">
-            <img src="{{ '/assets/images/user.png' }}" />
+            <img src="{{ '/assets/images/subject.png' }}" />
           </span>
         </li>
-        <li class="td" title="{{ user.name }}">
-          <span class="truncate-text name">{{ user.name }}</span>
+        <li class="td" title="{{ subject.title }}">
+          <span class="truncate-text name">{{ subject.title }}</span>
         </li>
-        <li class="td" title="{{ user.email?.value }}">
-          <span class="truncate-text email">{{ user.email?.value }}</span>
-        </li>
+        <!-- <li class="td" title="{{ subject.email?.value }}">
+          <span class="truncate-text email">{{ subject.email?.value }}</span>
+        </li> -->
         <!-- <li class="td">
-            <span class="truncate-text phone"> user.phone?.number </span>
+            <span class="truncate-text phone"> subject.phone?.number </span>
           </li>
           <li class="td">
             <span class="truncate-text organization">
-              user.organization.name
+              subject.organization.name
             </span>
           </li> -->
         <li class="td">
-          {{ user.timestamp?.createdAt }}
+          {{ subject.timestamp?.createdAt }}
         </li>
         <li class="td">
           <ion-button
@@ -55,11 +55,10 @@
           </ion-button>
           <ion-button
             fill="clear"
-            (click)="presentAlert(user)"
+            (click)="presentAlert(subject)"
             class="circle-button button-edit animate__animated animate__pulse-hover"
           >
             <ion-icon src="/assets/images/delete-icon.svg"></ion-icon>
-            <!-- <ion-label>Delete </ion-label> -->
           </ion-button>
         </li>
       </ul>
