@@ -1,0 +1,135 @@
+// @import "../../../../../assets/scss/mixins.scss";
+
+.container {
+  background-color: var(--ion-color-background-light);
+  padding-bottom: 5rem;
+
+  .header {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid rgba(var(--ion-color-light-rgb), 0.5);
+    padding-top: 6.2rem;
+    margin: 0 1rem;
+  }
+
+  .body {
+    .profile-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 2rem 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+
+        .profile-pic {
+          position: relative;
+
+          img {
+            border-radius: 50%;
+            width: 10rem;
+            height: 10rem;
+          }
+
+          .edit-button {
+            top: 70%;
+            left: 60%;
+            width: 3.5rem;
+            height: 3.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            border-radius: 50%;
+            background-color: #fff;
+            padding: 0.7rem;
+          }
+        }
+      }
+    }
+
+    .detail-wrap {
+      max-width: 500px;
+      margin: 0 auto;
+
+      .card-wrap {
+        padding: 4rem;
+        border-radius: 2rem;
+        background-color: var(--ion-color-background-medium);
+        border: 1px solid rgba(var(--ion-color-medium-rgb), 0.5);
+
+        .card-header {
+          //   @include body1;
+          padding: 0 1.5rem;
+
+          .info-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            li {
+              p {
+                display: block;
+                overflow: hidden;
+                word-wrap: break-word;
+              }
+            }
+          }
+        }
+
+        .card-body {
+          //   @include body2;
+          padding: 2rem 4.5rem;
+          border-bottom: 0.5px solid rgba(var(--ion-color-medium-rgb), 0.5);
+
+          ul {
+            li {
+              display: flex;
+              justify-content: flex-start;
+              flex-direction: column;
+
+              ion-label {
+                &.text-color {
+                  color: var(--ion-color-medium);
+                }
+
+                &.no-data {
+                  font-style: italic;
+                  color: var(--ion-color-medium);
+                }
+              }
+
+              &:not(:last-child) {
+                margin-bottom: 1.75rem;
+              }
+            }
+          }
+        }
+
+        .card-footer {
+          //   @include body2;
+          padding: 1rem 1.5rem 0rem;
+          ul {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            li {
+              .password {
+                font-size: 4rem;
+                line-height: 1rem;
+                font-weight: 700;
+              }
+              ion-button {
+                color: var(--ion-color-danger);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

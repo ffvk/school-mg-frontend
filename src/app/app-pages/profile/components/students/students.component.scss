@@ -1,0 +1,15 @@
+// @import "../../../../../assets/scss/mixins";
+.container {
+  background-color: var(--ion-color-background-light);
+  .content-wrap {
+    padding: 1rem 0;
+    .list-view {
+      padding: 2rem 4rem;
+    }
+    .table {
+      ul {
+        grid-template-columns: 4rem 10rem 18rem 28rem repeat(3, 1fr) 13rem;
+      }
+    }
+  }
+}

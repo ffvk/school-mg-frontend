@@ -1,0 +1,43 @@
+@mixin body1 {
+  font-family: Quicksand !important;
+  font-size: 2rem !important;
+  font-weight: 400 !important;
+  line-height: 3rem !important;
+}
+
+@mixin body2 {
+  font-family: Quicksand !important;
+  font-size: 1.75rem !important;
+  line-height: 2.75rem !important;
+  font-weight: 400 !important;
+}
+
+@mixin sub1 {
+  @include body1;
+  font-weight: 600 !important;
+}
+
+@mixin sub2 {
+  @include body2;
+  font-weight: 600 !important;
+}
+
+@mixin caption {
+  font-family: Quicksand !important;
+  font-size: 1.5rem !important;
+  font-weight: 400 !important;
+  line-height: 2.25rem !important;
+}
+
+@mixin caption-v2 {
+  font-family: Quicksand !important;
+  font-size: 1.5rem !important;
+  font-weight: 600 !important;
+  line-height: 2.25rem !important;
+}
+
+@mixin btn-m {
+  font-size: 1.75rem !important;
+  font-weight: 600 !important;
+  line-height: auto !important;
+}

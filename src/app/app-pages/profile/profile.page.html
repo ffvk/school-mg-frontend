@@ -1,29 +1,7 @@
-<div class="container">
-  <!-- <app-header *ngIf="me.userId" [me]="me"></app-header> -->
+<!-- <app-header *ngIf="me?.userId" [me]="me"></app-header> -->
 
-  <div class="body">
-    <ul class="profile-wrap">
-      <li>
-        <div class="profile-pic">
-          <img src="/assets/images/dog.jpg" alt="" />
-        </div>
-
-        <div class="name-wrap">
-          <h1>{{ me.name }}</h1>
-
-          <div class="role-wrap">
-            <ion-label> {{ UserRole[me.role] }} </ion-label>
-          </div>
-        </div>
-      </li>
-
-      <li>
-        <div class="sign-out-wrap">
-          <ion-button class="light secondary btn-lg" (click)="signOutModal()"
-            >Sign Out</ion-button
-          >
-        </div>
-      </li>
-    </ul>
+<ion-content [fullscreen]="true">
+  <div class="content-wrapper">
+    <app-vertical-tabs [tabs]="tabs"></app-vertical-tabs>
   </div>
-</div>
+</ion-content>
