@@ -5,6 +5,15 @@
       (queryUpdated)="searchQuery($event.key, $event.evt)"
     >
     </app-sub-header> -->
+
+  <div>
+    <ion-button
+      class="light danger animate__animated animate__pulse-hover"
+      fill="clear"
+      (click)="presentModal($event)"
+      >Create Home Work
+    </ion-button>
+  </div>
   <div class="content-wrap">
     <div class="empty-content-wrap" *ngIf="allHomeworks.length == 0">
       <img src="/assets/images/empty-content-img.svg" alt="" />

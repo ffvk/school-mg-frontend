@@ -9,6 +9,7 @@ import { HomeworksApiService } from 'src/app/shared/services/api/homeworks.servi
 import { ToasterService } from 'src/app/shared/services/helpers/toaster.service';
 import { UserLocalService } from 'src/app/shared/services/local/user-local.service';
 import { UploadHomeworkComponent } from '../upload-homework/upload-homework.component';
+import { HomeworkFormComponent } from '../homework-form/homework-form.component';
 
 @Component({
   selector: 'app-homeworks',
@@ -40,11 +41,11 @@ export class HomeworksComponent implements OnInit {
   async ngOnInit() {
     // this.query.parentOrganizationId = this.me.organizationId;
 
-    await this.getHomeworks();
+    await this.getHomeworks(this.query);
     // await this.getOrganizations();
   }
 
-  async getHomeworks() {
+  async getHomeworks(query: GetHomeworksDTO) {
     this.allHomeworks = (
       await lastValueFrom(this.homeworksAPIService.getHomeworks(this.query))
     ).homeworks;
@@ -84,7 +85,7 @@ export class HomeworksComponent implements OnInit {
             this.homeworksAPIService
               .deleteHomework(homework.homeworkId)
               .subscribe(() => {
-                this.getHomeworks();
+                this.getHomeworks(this.query);
 
                 this.toaster.success('Homework successfully deleted');
               });
@@ -108,7 +109,7 @@ export class HomeworksComponent implements OnInit {
     if (Array.isArray(this.query[key])) {
       this.query[key] = (this.query[key] as any).join(',') as never;
     }
-    this.getHomeworks();
+    this.getHomeworks(this.query);
   }
 
   async uploadHomeworkModal(homework: Homework = new Homework()) {
@@ -126,7 +127,36 @@ export class HomeworksComponent implements OnInit {
     let { data } = await modal.onDidDismiss();
 
     if (data) {
-      this.getHomeworks();
+      this.getHomeworks(this.query);
+    }
+  }
+
+  async presentModal(evt: Event, homework: Homework = new Homework({})) {
+    if (evt) {
+      evt.stopImmediatePropagation();
+      evt.stopPropagation();
+      evt.preventDefault();
+    }
+
+    homework.tutorId = this.query.tutorId || '';
+    homework.sclassId = this.query.sclassId || '';
+    homework.subjectId = this.query.subjectId || '';
+
+    const modal = await this.modalController.create({
+      component: HomeworkFormComponent,
+      cssClass: 'asset-form-wrap',
+      backdropDismiss: false,
+      componentProps: {
+        asset: homework,
+      },
+    });
+
+    await modal.present();
+
+    let { data } = await modal.onDidDismiss();
+
+    if (data) {
+      this.getHomeworks(this.query);
     }
   }
 }
