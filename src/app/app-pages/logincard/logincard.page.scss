@@ -1,0 +1,13 @@
+.container {
+  .body {
+    .card {
+      display: flex;
+      flex-direction: column;
+
+      img {
+        height: 2rem;
+        width: 2rem;
+      }
+    }
+  }
+}

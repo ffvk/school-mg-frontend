@@ -5,6 +5,15 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
+    redirectTo: 'logincard',
+  },
+
+  {
+    path: 'logincard',
+    loadChildren: () =>
+      import('./app-pages/logincard/logincard.module').then(
+        (m) => m.LogincardPageModule
+      ),
     redirectTo: 'login',
   },
 
