@@ -111,13 +111,13 @@ export class HomeworksComponent implements OnInit {
     this.getHomeworks();
   }
 
-  async uploadHomeworkModal() {
+  async uploadHomeworkModal(homework: Homework = new Homework()) {
     const modal = await this.modalController.create({
       component: UploadHomeworkComponent,
       cssClass: 'upload-photo-form-wrap',
       backdropDismiss: false,
       componentProps: {
-        homework: this.allHomeworks,
+        homework: homework,
       },
     });
 

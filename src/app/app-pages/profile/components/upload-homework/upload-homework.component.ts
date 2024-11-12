@@ -21,7 +21,7 @@ export class UploadHomeworkComponent implements OnInit {
 
   isDisabled: boolean = false;
 
-  allowedFileFormats: string[] = ['image/png', 'image/jpeg'];
+  // allowedFileFormats: string[] = ['image/png', 'image/jpeg'];
 
   constructor(
     public readonly modalController: ModalController,
@@ -40,6 +40,8 @@ export class UploadHomeworkComponent implements OnInit {
       this.toaster.error('Please upload file first');
       return;
     }
+
+    console.log('Uploading file:', this.profilePic);
 
     await lastValueFrom(
       this.homeworksAPIService.uploadHomeworkFile(
