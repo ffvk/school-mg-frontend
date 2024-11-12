@@ -1,3 +1,53 @@
-<p>
-  homework-form works!
-</p>
+<ion-header class="ion-no-border">
+  <div class="header">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="modalController.dismiss()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <h6 class="sub1">{{ type === "create" ? "Create" : "Edit" }} Artwork</h6>
+  </div>
+</ion-header>
+
+<ion-content>
+  <form novalidate autocomplete="off" #homeworkForm="ngForm" *ngIf="homework">
+    <div class="row">
+      <ion-item lines="none">
+        <ion-label position="stacked" class="body2">
+          Name <span class="danger">*</span></ion-label
+        >
+        <ion-input
+          type="text"
+          name="title"
+          [(ngModel)]="homework.title"
+          ngDefaultControl
+          #nameCtrl="ngModel"
+          required
+          placeholder="title"
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <div class="row">
+      <ion-item lines="none">
+        <ion-label position="stacked" class="body2">Description</ion-label>
+        <ion-textarea
+          type="text"
+          name="description"
+          [(ngModel)]="homework.description"
+          ngDefaultControl
+          #descriptionCtrl="ngModel"
+          rows="7"
+        ></ion-textarea>
+      </ion-item>
+    </div>
+
+    <ion-footer class="ion-no-border">
+      <ion-button fill="outline" (click)="save()">
+        <ion-label>Done</ion-label>
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

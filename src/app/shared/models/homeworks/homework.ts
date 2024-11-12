@@ -6,6 +6,8 @@ export class Homework {
 
   title: string = '';
 
+  description?: string = '';
+
   subjectId: string = '';
 
   tutorId: string = '';
@@ -19,6 +21,8 @@ export class Homework {
       this.homeworkId = homework['homeworkId'] || homework['_id'] || '';
 
       this.title = homework['title'] || '';
+
+      this.description = homework['description'] || '';
 
       this.tutorId = homework['tutorId'] || '';
 
