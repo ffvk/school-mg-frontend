@@ -8,6 +8,7 @@ import { Homework } from 'src/app/shared/models/homeworks/homework';
 import { HomeworksApiService } from 'src/app/shared/services/api/homeworks.service';
 import { ToasterService } from 'src/app/shared/services/helpers/toaster.service';
 import { UserLocalService } from 'src/app/shared/services/local/user-local.service';
+import { UploadHomeworkComponent } from '../upload-homework/upload-homework.component';
 
 @Component({
   selector: 'app-homeworks',
@@ -110,28 +111,22 @@ export class HomeworksComponent implements OnInit {
     this.getHomeworks();
   }
 
-  // async getOrganizations() {
-  //   let organizationQuery: GetOrganizationsDTO = {
-  //     limit: -1,
-  //     page: 1,
-  //     organizationId: this.me.organizationId,
-  //     type: 'OFFSET_PRINTER',
-  //   };
+  async uploadHomeworkModal() {
+    const modal = await this.modalController.create({
+      component: UploadHomeworkComponent,
+      cssClass: 'upload-photo-form-wrap',
+      backdropDismiss: false,
+      componentProps: {
+        user: this.allHomeworks,
+      },
+    });
 
-  //   this.offsetOrganizations = (
-  //     await lastValueFrom(
-  //       this.organizationAPIService.getOrganizations(organizationQuery)
-  //     )
-  //   ).organizations;
+    await modal.present();
 
-  //   organizationQuery.type = 'CLIENT';
-  //   delete organizationQuery.organizationId;
-  //   organizationQuery.parentOrganizationId = this.me.organizationId;
+    let { data } = await modal.onDidDismiss();
 
-  //   this.clientOrganizations = (
-  //     await lastValueFrom(
-  //       this.organizationAPIService.getOrganizations(organizationQuery)
-  //     )
-  //   ).organizations;
-  // }
+    // if (data) {
+    //   this.getCurrentUser();
+    // }
+  }
 }

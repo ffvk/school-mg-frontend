@@ -1,0 +1,41 @@
+<ion-header class="ion-no-border">
+  <div class="header">
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="modalController.dismiss()">
+          <ion-icon name="close-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <h6 class="sub1">Upload Profile Photo</h6>
+  </div>
+</ion-header>
+
+<ion-content>
+  <form
+    novalidate
+    autocomplete="off"
+    #UploadPhotoForm="ngForm"
+    *ngIf="homework"
+  >
+    <div class="row">
+      <ion-item lines="none">
+        <ion-label position="stacked" class="body2">
+          Upload Profile Photo
+        </ion-label>
+        <ion-input
+          id="profilePic"
+          type="file"
+          name="profilePic"
+          (change)="readFile($event)"
+        ></ion-input>
+      </ion-item>
+    </div>
+
+    <ion-footer class="ion-no-border">
+      <ion-button fill="outline" [disabled]="!profilePic" (click)="save()">
+        <ion-label>Save</ion-label>
+      </ion-button>
+    </ion-footer>
+  </form>
+</ion-content>

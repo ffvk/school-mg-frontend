@@ -13,6 +13,7 @@ import { StudentsComponent } from './components/students/students.component';
 import { TeachersComponent } from './components/teachers/teachers.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { HomeworksComponent } from './components/homeworks/homeworks.component';
+import { UploadHomeworkComponent } from './components/upload-homework/upload-homework.component';
 
 @NgModule({
   imports: [
@@ -29,6 +30,7 @@ import { HomeworksComponent } from './components/homeworks/homeworks.component';
     TeachersComponent,
     SubjectsComponent,
     HomeworksComponent,
+    UploadHomeworkComponent,
   ],
 })
 export class ProfilePageModule {}

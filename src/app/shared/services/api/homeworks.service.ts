@@ -78,4 +78,23 @@ export class HomeworksApiService {
       })
       .pipe(map((response) => null));
   }
+
+  uploadHomeworkFile(homeworkId: string, file: File): Observable<Homework> {
+    let uploadUserProfilePicURL: string =
+      RouteSettings.BASE_URL + RouteSettings.ENDPOINTS.HOMEWORKS.UPLOAD_FILE;
+
+    const formData = new FormData();
+
+    formData.append('homeworkId', homeworkId);
+
+    formData.append('homeworkFile', file);
+
+    return this.httpClient
+      .post(uploadUserProfilePicURL, formData)
+      .pipe(
+        map(
+          (response: { [key: string]: any }) => new Homework(response['data'])
+        )
+      );
+  }
 }
