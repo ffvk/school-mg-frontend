@@ -14,7 +14,6 @@ const routes: Routes = [
       import('./app-pages/logincard/logincard.module').then(
         (m) => m.LogincardPageModule
       ),
-    redirectTo: 'login',
   },
 
   {
