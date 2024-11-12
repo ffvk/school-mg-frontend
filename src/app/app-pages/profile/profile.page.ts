@@ -31,5 +31,22 @@ export class ProfilePage implements OnInit, ViewDidEnter {
 
   ionViewDidEnter() {
     this.me = this.userLocalService.getMe();
+    this.filterTabsBasedOnRole();
+  }
+
+  filterTabsBasedOnRole() {
+    // Assuming the role is stored in `me.role`, modify this as needed
+    const userRole = this.me.role;
+
+    // Conditionally hide tabs based on role
+    if (userRole === 'STUDENT') {
+      this.tabs = this.tabs.filter(
+        (tab) =>
+          tab.title !== 'Teachers Details' && tab.title !== 'Students Details'
+      );
+    } else if (userRole === 'ROOT') {
+      this.tabs = this.tabs.filter((tab) => tab.title !== 'Teachers Details');
+    }
+    // Add more conditions for other roles if needed (like 'admin')
   }
 }
