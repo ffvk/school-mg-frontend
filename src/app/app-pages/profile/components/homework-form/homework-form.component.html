@@ -7,12 +7,17 @@
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
-    <h6 class="sub1">{{ type === "create" ? "Create" : "Edit" }} Artwork</h6>
+    <h6 class="sub1">Client User</h6>
   </div>
 </ion-header>
 
 <ion-content>
-  <form novalidate autocomplete="off" #homeworkForm="ngForm" *ngIf="homework">
+  <form
+    novalidate
+    autocomplete="country"
+    #homeworkForm="ngForm"
+    *ngIf="homework"
+  >
     <div class="row">
       <ion-item lines="none">
         <ion-label position="stacked" class="body2">
@@ -20,12 +25,11 @@
         >
         <ion-input
           type="text"
-          name="title"
+          name="name"
           [(ngModel)]="homework.title"
           ngDefaultControl
           #nameCtrl="ngModel"
           required
-          placeholder="title"
         ></ion-input>
       </ion-item>
     </div>
@@ -35,13 +39,43 @@
         <ion-label position="stacked" class="body2">Description</ion-label>
         <ion-textarea
           type="text"
-          name="description"
+          name="bio"
           [(ngModel)]="homework.description"
           ngDefaultControl
-          #descriptionCtrl="ngModel"
+          #bioCtrl="ngModel"
           rows="7"
         ></ion-textarea>
       </ion-item>
+    </div>
+
+    <div class="row">
+      <div class="input-container">
+        <ion-label position="stacked"
+          >Sclasses <span class="danger">*</span></ion-label
+        >
+
+        <!-- <ion-item class="type-wrap" lines="none" *ngIf="sclasses.length">
+          <ion-select
+            class="custom-select"
+            labelPlacement="floating"
+            name="sclass"
+            id="sclassId"
+            [(ngModel)]="homework.sclassId"
+            ngDefaultControl
+            #typeCtrl="ngModel"
+            [multiple]="false"
+            required
+            [disabled]="isDisabled"
+          >
+            <ion-select-option
+              [value]="sclass.sclassId"
+              *ngFor="let sclass of sclasses"
+            >
+              {{ sclass.className }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item> -->
+      </div>
     </div>
 
     <ion-footer class="ion-no-border">

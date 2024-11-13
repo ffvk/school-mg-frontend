@@ -11,6 +11,12 @@ import { UserLocalService } from 'src/app/shared/services/local/user-local.servi
 import { UploadHomeworkComponent } from '../upload-homework/upload-homework.component';
 import { HomeworkFormComponent } from '../homework-form/homework-form.component';
 import { User } from 'src/app/shared/models/users/user';
+import { Sclass } from 'src/app/shared/models/sclasses/sclass';
+import { SclassesAPIService } from 'src/app/shared/services/api/sclasses.service';
+import { GetSclassesDTO } from 'src/app/shared/dtos/sclasses/get-sclasses-dto/get-sclasses-dto';
+import { GetSubjectsDTO } from 'src/app/shared/dtos/subjects/get-subjects-dto/get-subjects-dto';
+import { Subject } from 'src/app/shared/models/subjects/subject';
+import { SubjectsApiService } from 'src/app/shared/services/api/subjects.service';
 
 @Component({
   selector: 'app-homeworks',
@@ -21,15 +27,22 @@ export class HomeworksComponent implements OnInit {
   allHomeworks: Homework[] = [];
   me: User = new User();
 
+  sclasses: Sclass[] = [];
+  subjects: Subject[] = [];
+
   query: GetHomeworksDTO = {
     limit: -1,
     page: 1,
   };
 
-  // organizationQuery: GetOrganizationsDTO = {
-  //   limit: -1,
-  //   page: 1,
-  // };
+  sclassQuery: GetSclassesDTO = {
+    limit: -1,
+    page: 1,
+  };
+  subjectsQuery: GetSubjectsDTO = {
+    limit: -1,
+    page: 1,
+  };
 
   constructor(
     private readonly userLocalService: UserLocalService,
@@ -37,20 +50,35 @@ export class HomeworksComponent implements OnInit {
     private router: Router,
     private modalController: ModalController,
     private readonly homeworksAPIService: HomeworksApiService,
-    private toaster: ToasterService // private readonly organizationAPIService: OrganizationsApiService
+    private toaster: ToasterService, // private readonly organizationAPIService: OrganizationsApiService
+    private readonly sclassesAPIService: SclassesAPIService,
+    private readonly subjectsAPIService: SubjectsApiService
   ) {}
 
   async ngOnInit() {
     // this.query.parentOrganizationId = this.me.organizationId;
 
     await this.getHomeworks(this.query);
-    // await this.getOrganizations();
+    await this.getSclasses();
+    await this.getSubjects();
   }
 
   async getHomeworks(query: GetHomeworksDTO) {
     this.allHomeworks = (
       await lastValueFrom(this.homeworksAPIService.getHomeworks(this.query))
     ).homeworks;
+  }
+
+  async getSclasses() {
+    this.sclasses = (
+      await lastValueFrom(this.sclassesAPIService.getSclasses(this.sclassQuery))
+    ).sclasses;
+  }
+
+  async getSubjects() {
+    this.subjects = (
+      await lastValueFrom(this.subjectsAPIService.getSubjects(this.sclassQuery))
+    ).subjects;
   }
 
   // async clientHomeworkModal(homeworkData: Homework = new Homework({})) {
@@ -146,6 +174,8 @@ export class HomeworksComponent implements OnInit {
       backdropDismiss: false,
       componentProps: {
         homework: homework,
+        sclasses: this.sclasses,
+        subjects: this.subjects,
       },
     });
 

@@ -21,3 +21,16 @@ ion-content {
   --padding-start: 5rem;
   --padding-end: 5rem;
 }
+
+.countryCode {
+  width: 14rem;
+  text-align: center;
+}
+
+.phoneNumber {
+  width: calc(100% - 14rem);
+}
+
+.body2 {
+  text-align: left;
+}
