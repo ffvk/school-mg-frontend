@@ -37,6 +37,7 @@ export class BasicComponent implements OnInit {
     this.me = this.userLocalService.getMe();
     await this.getCurrentUser();
     console.log(this.me);
+    console.log('tutorId', this.me);
   }
 
   async signOutModal() {
