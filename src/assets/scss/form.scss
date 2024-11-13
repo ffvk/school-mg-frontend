@@ -1,0 +1,111 @@
+form {
+  div.row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 2.5rem;
+    gap: 2rem;
+
+    // & > *:not(:last-child) {
+    //   margin-right: 2rem;
+    // }
+
+    .input-container {
+      width: 100%;
+
+      & > ion-label {
+        @include body2;
+      }
+    }
+
+    &.no-mb {
+      margin-bottom: 0;
+    }
+  }
+
+  ion-footer {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  ion-label + ion-item {
+    margin-top: 0;
+  }
+
+  ion-item {
+    --padding-top: 0;
+    --padding-bottom: 0;
+    --padding-start: 0;
+    --padding-end: 0;
+    --inner-padding-end: 0;
+    --background: transparent;
+    --min-height: 4.5rem;
+    width: 100%;
+    --ion-font-family: Quicksand;
+
+    ion-label {
+      @include sub1;
+      --ion-font-family: Quicksand;
+
+      & + ion-input {
+        margin-top: 0;
+        --ion-font-family: Quicksand;
+      }
+    }
+
+    .custom-select {
+      --min-width: 100%;
+      --min-height: unset;
+      text-align: left;
+    }
+
+    .custom-select .select-text {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      width: 100%;
+      text-align: left;
+    }
+
+    ion-input,
+    ion-select,
+    ion-textarea,
+    ion-searchbar {
+      @include body2;
+      border: 0;
+      border-radius: 4px !important;
+      --border-radius: 4px !important;
+      --padding-start: 1rem !important;
+      --padding-end: 1rem !important;
+      --background: var(--ion-color-background-dark) !important;
+      --font-family: Quicksand !important;
+    }
+
+    ion-textarea {
+      margin-top: 0 !important;
+    }
+
+    ion-select {
+      --padding-top: 0;
+      --padding-bottom: 0;
+      --padding-start: 2rem !important;
+      --padding-end: 2rem !important;
+      height: 100%;
+    }
+
+    ion-textarea {
+      font-size: 1.8rem !important;
+    }
+  }
+
+  ion-searchbar {
+    padding: 0 !important;
+    height: 4.5rem !important;
+    --box-shadow: none !important;
+
+    .searchbar-input.sc-ion-searchbar-md {
+      font-size: 1.8rem;
+      background: var(--ion-color-background-dark);
+    }
+  }
+}

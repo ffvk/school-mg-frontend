@@ -1,0 +1,95 @@
+ion-modal {
+  --min-height: 20px;
+  --border-radius: 1rem;
+  --background: var(--ion-color-background-light) !important;
+
+  &.layout-wrap {
+    --height: 90vh;
+  }
+
+  &.bg-color-wrap {
+    --height: 90vh;
+  }
+
+  &.section-wrap {
+    --height: 90vh;
+  }
+
+  &.accent-color-wrap {
+    --height: 90vh;
+  }
+
+  &.logo-wrap {
+    --height: 90vh;
+  }
+
+  &.cover-img-wrap {
+    --height: 90vh;
+
+    .none {
+      --height: 90vh;
+    }
+
+    .custom-image {
+      --height: 100vh;
+    }
+  }
+
+  &.upload-photo-form-wrap {
+    --height: 90vh;
+  }
+
+  &.upload-company-logo-wrap {
+    --height: 90vh;
+  }
+
+  &.client-form-wrap {
+    --height: 90vh;
+  }
+
+  &.project-form-wrap {
+    --height: 90vh;
+  }
+  &.asset-form-wrap {
+    --height: 90vh;
+  }
+  &.assetVersion-form-wrap {
+    --height: 90vh;
+  }
+
+  &.user-form-wrap {
+    --height: 90vh;
+  }
+
+  &.basic-form-wrap {
+    --height: 90vh;
+  }
+
+  &.company-form-wrap {
+    --height: 90vh;
+  }
+
+  &.password-form-wrap {
+    --height: 90vh;
+  }
+
+  &.client-user-form-wrap {
+    --height: 90vh;
+  }
+
+  &.offset-user-form-wrap {
+    --height: 90vh;
+  }
+
+  &.asset-version-status-form-wrap {
+    --height: 90vh;
+  }
+
+  form {
+    ion-select {
+      ion-item & {
+        margin-top: 4rem;
+      }
+    }
+  }
+}
