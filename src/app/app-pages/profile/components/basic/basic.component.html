@@ -21,9 +21,6 @@
 
         <div class="name-wrap">
           <h5>{{ me.name }}</h5>
-          <!-- <ion-label class="body2"
-            >{{ UserRole[me.role] }} | {{ UserGender[me.gender] }}</ion-label
-          > -->
         </div>
       </li>
 
@@ -65,10 +62,15 @@
         <div class="card-body">
           <ul>
             <li>
-              <span class="body2">Bio</span>
+              <!-- <span class="body2">Bio</span> -->
+
+              <ion-label>Role:{{ UserRole[me.role] }} </ion-label>
+
               <!-- <ion-label class="text-color" *ngIf="me.bio">{{
                 me.bio
               }}</ion-label>
+
+              
 
               <ion-label class="no-data" *ngIf="!me.bio"
                 >No bio added</ion-label
