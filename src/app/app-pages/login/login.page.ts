@@ -37,7 +37,7 @@ export class LoginPage implements OnInit {
       this.userLocalService.getMe()?.email?.verified &&
       this.userLocalService.getMyToken()
     ) {
-      this.router.navigate(['/home']);
+      this.router.navigate(['/profile']);
     }
 
     this.user = this.userLocalService.getMe();
@@ -86,7 +86,7 @@ export class LoginPage implements OnInit {
         if (!this.user.email.verified) {
           this.router.navigateByUrl('/verify-email');
         } else {
-          this.router.navigateByUrl('/home');
+          this.router.navigateByUrl('/profile');
         }
       });
   }

@@ -40,18 +40,7 @@ const routes: Routes = [
         (m) => m.ProfilePageModule
       ),
   },
-  {
-    path: 'product',
-    loadChildren: () =>
-      import('./app-pages/product/product.module').then(
-        (m) => m.ProductPageModule
-      ),
-  },
-  {
-    path: 'order',
-    loadChildren: () =>
-      import('./app-pages/order/order.module').then((m) => m.OrderPageModule),
-  },
+
   {
     path: 'subjects',
     loadChildren: () =>

@@ -6,7 +6,7 @@
     >
     </app-sub-header> -->
 
-  <div *ngIf="me.role == 'STUDENT'">
+  <div *ngIf="me.role !== 'STUDENT'">
     <ion-button
       class="light danger animate__animated animate__pulse-hover"
       fill="clear"

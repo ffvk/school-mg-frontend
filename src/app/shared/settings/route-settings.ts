@@ -24,20 +24,6 @@ export class RouteSettings {
       DELETE: '/tokens',
     },
 
-    PRODUCTS: {
-      GET: '/products',
-      CREATE: '/products',
-      UPDATE: '/products',
-      DELETE: '/products',
-    },
-
-    ORDERS: {
-      GET: '/orders',
-      CREATE: '/orders',
-      UPDATE: '/orders',
-      DELETE: '/orders',
-    },
-
     SUBJECTS: {
       GET: '/subjects',
       CREATE: '/subjects',
