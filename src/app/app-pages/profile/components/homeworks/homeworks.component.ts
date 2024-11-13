@@ -50,13 +50,14 @@ export class HomeworksComponent implements OnInit {
     private router: Router,
     private modalController: ModalController,
     private readonly homeworksAPIService: HomeworksApiService,
-    private toaster: ToasterService, // private readonly organizationAPIService: OrganizationsApiService
+    private toaster: ToasterService,
     private readonly sclassesAPIService: SclassesAPIService,
     private readonly subjectsAPIService: SubjectsApiService
   ) {}
 
   async ngOnInit() {
-    // this.query.parentOrganizationId = this.me.organizationId;
+    this.me = this.userLocalService.getMe();
+    console.log('me', this.me.role);
 
     await this.getHomeworks(this.query);
     await this.getSclasses();
@@ -82,27 +83,6 @@ export class HomeworksComponent implements OnInit {
       await lastValueFrom(this.subjectsAPIService.getSubjects(this.sclassQuery))
     ).subjects;
   }
-
-  // async clientHomeworkModal(homeworkData: Homework = new Homework({})) {
-  //   const modal = await this.modalController.create({
-  //     component: ClientHomeworkFormComponent,
-  //     cssClass: 'client-homework-form-wrap',
-  //     backdropDismiss: false,
-  //     componentProps: {
-  //       homework: homeworkData,
-  //       organizations: this.clientOrganizations,
-  //       me: this.me,
-  //     },
-  //   });
-
-  //   await modal.present();
-
-  //   let { data } = await modal.onDidDismiss();
-
-  //   if (data) {
-  //     this.getHomeworks();
-  //   }
-  // }
 
   async presentAlert(homework: Homework) {
     const alert = await this.alertController.create({
