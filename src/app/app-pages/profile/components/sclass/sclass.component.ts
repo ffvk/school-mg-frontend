@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
 import { lastValueFrom } from 'rxjs';
+import { GetSclassesDTO } from 'src/app/shared/dtos/sclasses/get-sclasses-dto/get-sclasses-dto';
 import { GetUsersDTO } from 'src/app/shared/dtos/users/get-users-dto/get-users.dto';
 import { Sclass } from 'src/app/shared/models/sclasses/sclass';
 import { User } from 'src/app/shared/models/users/user';
@@ -56,10 +57,10 @@ export class SclassComponent implements OnInit {
     // this.query.parentOrganizationId = this.me.organizationId;
 
     await this.getUsers();
-    await this.getSclasses();
+    await this.getSclasses(this.query);
   }
 
-  async getSclasses() {
+  async getSclasses(query: GetSclassesDTO) {
     this.sclasses = (
       await lastValueFrom(this.sclassesAPIService.getSclasses(this.query))
     ).sclasses;
@@ -84,7 +85,7 @@ export class SclassComponent implements OnInit {
             this.sclassesAPIService
               .deleteSclass(sclass.sclassId)
               .subscribe(() => {
-                this.getSclasses();
+                this.getSclasses(this.query);
 
                 this.toaster.success('Sclass successfully deleted');
               });
