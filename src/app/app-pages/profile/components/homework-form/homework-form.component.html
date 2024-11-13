@@ -21,14 +21,15 @@
     <div class="row">
       <ion-item lines="none">
         <ion-label position="stacked" class="body2">
-          Name <span class="danger">*</span></ion-label
-        >
+          Name <span class="danger">*</span>
+        </ion-label>
         <ion-input
           type="text"
           name="name"
           [(ngModel)]="homework.title"
           ngDefaultControl
           #nameCtrl="ngModel"
+          placeholder="enter name"
           required
         ></ion-input>
       </ion-item>
@@ -43,6 +44,7 @@
           [(ngModel)]="homework.description"
           ngDefaultControl
           #bioCtrl="ngModel"
+          placeholder="enter description"
           rows="7"
         ></ion-textarea>
       </ion-item>
@@ -53,19 +55,16 @@
         <ion-label position="stacked"
           >Sclasses <span class="danger">*</span></ion-label
         >
-
-        <!-- <ion-item class="type-wrap" lines="none" *ngIf="sclasses.length">
+        <ion-item class="type-wrap" lines="none">
           <ion-select
             class="custom-select"
-            labelPlacement="floating"
             name="sclass"
             id="sclassId"
             [(ngModel)]="homework.sclassId"
             ngDefaultControl
-            #typeCtrl="ngModel"
-            [multiple]="false"
+            #sclassCtrl="ngModel"
             required
-            [disabled]="isDisabled"
+            [multiple]="false"
           >
             <ion-select-option
               [value]="sclass.sclassId"
@@ -74,7 +73,34 @@
               {{ sclass.className }}
             </ion-select-option>
           </ion-select>
-        </ion-item> -->
+        </ion-item>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-container">
+        <ion-label position="stacked"
+          >Subjects <span class="danger">*</span></ion-label
+        >
+        <ion-item class="type-wrap" lines="none">
+          <ion-select
+            class="custom-select"
+            name="subject"
+            id="subjectId"
+            [(ngModel)]="homework.subjectId"
+            ngDefaultControl
+            #subjectCtrl="ngModel"
+            required
+            [multiple]="false"
+          >
+            <ion-select-option
+              [value]="subject.subjectId"
+              *ngFor="let subject of subjects"
+            >
+              {{ subject.subjectName }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
       </div>
     </div>
 
