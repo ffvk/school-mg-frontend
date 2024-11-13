@@ -61,6 +61,8 @@ export class HomeworksComponent implements OnInit {
     await this.getHomeworks(this.query);
     await this.getSclasses();
     await this.getSubjects();
+
+    console.log('subjects', this.subjects);
   }
 
   async getHomeworks(query: GetHomeworksDTO) {

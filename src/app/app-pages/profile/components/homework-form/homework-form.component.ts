@@ -17,8 +17,8 @@ import { ToasterService } from 'src/app/shared/services/helpers/toaster.service'
 export class HomeworkFormComponent implements OnInit {
   @ViewChild('homeworkForm', { static: false }) homeworkForm: any;
   @Input() homework: Homework = new Homework();
-  @Input() subject: Subject = new Subject();
-  @Input() sclass: Sclass = new Sclass();
+  @Input() sclasses: Sclass[] = [];
+  @Input() subjects: Subject[] = [];
 
   type: 'create' | 'edit' = 'create';
 
@@ -38,6 +38,9 @@ export class HomeworkFormComponent implements OnInit {
     if (this.homework.homeworkId) {
       this.type = 'edit';
     }
+
+    console.log('subjects in subjectform ts ', this.subjects);
+    console.log('subjects in sclass ts ', this.sclasses);
   }
 
   async save() {
