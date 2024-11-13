@@ -13,7 +13,7 @@ import { UpdateSclassDTO } from '../../dtos/sclasses/update-sclass-dto/update-sc
 @Injectable({
   providedIn: 'root',
 })
-export class SclassesService {
+export class SclassesAPIService {
   constructor(private readonly httpClient: HttpClient) {}
 
   getSclasses(query?: GetSclassesDTO): Observable<Sclasses> {

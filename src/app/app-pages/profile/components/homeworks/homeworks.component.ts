@@ -10,6 +10,7 @@ import { ToasterService } from 'src/app/shared/services/helpers/toaster.service'
 import { UserLocalService } from 'src/app/shared/services/local/user-local.service';
 import { UploadHomeworkComponent } from '../upload-homework/upload-homework.component';
 import { HomeworkFormComponent } from '../homework-form/homework-form.component';
+import { User } from 'src/app/shared/models/users/user';
 
 @Component({
   selector: 'app-homeworks',
@@ -18,6 +19,7 @@ import { HomeworkFormComponent } from '../homework-form/homework-form.component'
 })
 export class HomeworksComponent implements OnInit {
   allHomeworks: Homework[] = [];
+  me: User = new User();
 
   query: GetHomeworksDTO = {
     limit: -1,
@@ -138,16 +140,12 @@ export class HomeworksComponent implements OnInit {
       evt.preventDefault();
     }
 
-    homework.tutorId = this.query.tutorId || '';
-    homework.sclassId = this.query.sclassId || '';
-    homework.subjectId = this.query.subjectId || '';
-
     const modal = await this.modalController.create({
       component: HomeworkFormComponent,
-      cssClass: 'asset-form-wrap',
+      cssClass: 'homework-form-wrap',
       backdropDismiss: false,
       componentProps: {
-        asset: homework,
+        homework: homework,
       },
     });
 

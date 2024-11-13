@@ -4,7 +4,7 @@ import { UpdateSclassDTO } from '../../dtos/sclasses/update-sclass-dto/update-sc
 export class Sclass {
   sclassId: string = '';
 
-  name: string = '';
+  className: string = '';
 
   tutorId: string = '';
 
@@ -16,7 +16,7 @@ export class Sclass {
     if (sclass) {
       this.sclassId = sclass['sclassId'] || sclass['_id'] || '';
 
-      this.name = sclass['name'] || '';
+      this.className = sclass['className'] || '';
 
       // this.tutorId = sclass['tutorId'] || '';
 
@@ -31,16 +31,15 @@ export class Sclass {
 
   toCreateDTO(): CreateSclassDTO {
     return {
-      name: this.name,
+      className: this.className,
       tutorId: this.tutorId,
-      subjectId: this.subjectId,
     };
   }
 
   toUpdateDTO(): UpdateSclassDTO {
     return {
-      sclassId: this.sclassId,
-      name: this.name,
+      tutorId: this.tutorId,
+      className: this.className,
     };
   }
 }
