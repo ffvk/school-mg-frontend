@@ -1,0 +1,67 @@
+<div class="container">
+  <!-- <app-sub-header
+    [sclassType]="'Client Users'"
+    (createButtonClicked)="clientUserModal()"
+    (queryUpdated)="searchQuery($event.key, $event.evt)"
+  >
+  </app-sub-header> -->
+  <div class="content-wrap">
+    <div class="empty-content-wrap" *ngIf="sclasses.length == 0">
+      <img src="/assets/images/empty-content-img.svg" alt="" />
+      <h4>No sclasses found!</h4>
+      <h6>Please insert some sclasses to get started.</h6>
+    </div>
+    <div class="list-view table" *ngIf="sclasses.length > 0">
+      <ul class="head">
+        <li class="th">#</li>
+        <li class="th"></li>
+        <li class="th">Name</li>
+        <!-- <li class="th">Email</li> -->
+        <!-- <li class="th">Phone</li>
+        <li class="th">Organization</li> -->
+        <li class="th">Created On</li>
+        <li class="th"></li>
+      </ul>
+      <ul *ngFor="let sclass of sclasses; let idx = index">
+        <li class="td">{{ idx + 1 }}</li>
+        <li class="td">
+          <span class="img-wrap">
+            <img src="{{ '/assets/images/sclass.png' }}" />
+          </span>
+        </li>
+        <li class="td" title="{{ sclass.className }}">
+          <span class="truncate-text className">{{ sclass.className }}</span>
+        </li>
+        <!-- <li class="td" title="{{ sclass.email.value }}">
+          <span class="truncate-text email">{{ sclass.email.value }}</span>
+        </li> -->
+        <!-- <li class="td">
+          <span class="truncate-text phone"> sclass.phone?.number </span>
+        </li>
+        <li class="td">
+          <span class="truncate-text organization">
+            sclass.organization.className
+          </span>
+        </li> -->
+        <li class="td">
+          {{ sclass.timestamp?.createdAt }}
+        </li>
+        <li class="td">
+          <ion-button
+            fill="clear"
+            class="circle-button animate__animated animate__pulse-hover"
+          >
+            <ion-icon src="/assets/images/edit-icon.svg"></ion-icon>
+          </ion-button>
+          <ion-button
+            fill="clear"
+            (click)="presentAlert(sclass)"
+            class="circle-button button-edit animate__animated animate__pulse-hover"
+          >
+            <ion-icon src="/assets/images/delete-icon.svg"></ion-icon>
+          </ion-button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

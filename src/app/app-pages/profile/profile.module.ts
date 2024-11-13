@@ -16,6 +16,7 @@ import { HomeworksComponent } from './components/homeworks/homeworks.component';
 import { UploadHomeworkComponent } from './components/upload-homework/upload-homework.component';
 import { Homework } from 'src/app/shared/models/homeworks/homework';
 import { HomeworkFormComponent } from './components/homework-form/homework-form.component';
+import { SclassComponent } from './components/sclass/sclass.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { HomeworkFormComponent } from './components/homework-form/homework-form.
     HomeworksComponent,
     UploadHomeworkComponent,
     HomeworkFormComponent,
+    SclassComponent,
   ],
 })
 export class ProfilePageModule {}
