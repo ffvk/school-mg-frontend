@@ -57,7 +57,7 @@
         <li class="td">
           {{ subject.timestamp?.createdAt }}
         </li>
-        <li class="td" *ngIf="me.role != 'STUDENT'">
+        <li class="td">
           <ion-button
             fill="clear"
             class="circle-button animate__animated animate__pulse-hover"
@@ -67,6 +67,7 @@
           </ion-button>
 
           <ion-button
+            *ngIf="me.role != 'STUDENT'"
             fill="clear"
             (click)="presentAlert(subject)"
             class="circle-button button-edit animate__animated animate__pulse-hover"
